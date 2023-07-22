@@ -1,0 +1,70 @@
+:root {
+    --main-color: #43ffba;
+}
+
+* {
+    font-size: 1.1rem;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eee;
+}
+
+.todoForm,
+#todos>* {
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.todoForm {
+    margin: 40px auto;
+}
+
+input {
+    padding: 20px;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+}
+
+input[type='text'] {
+    flex-grow: 1;
+}
+
+.userInput:focus-visible {
+    outline: 3px solid var(--main-color);
+}
+
+#btns {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+input[value='Add'],
+input[value='Update'],
+#btns>input {
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+    flex-basis: 45%;
+}
+
+input[value='Add'],
+input[value='Update'] {
+    flex-basis: 20%;
+}
+
+.completed {
+    color: var(--main-color);
+    text-decoration: line-through;
+}

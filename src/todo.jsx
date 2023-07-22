@@ -1,5 +1,5 @@
 import './todo.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import Todos from './todos'
 import EditForm from './editForm'
@@ -8,6 +8,12 @@ function Todo() {
     const [ready, setReady] = useState(false)
     const [value, setValue] = useState('')
     const [todos, setTodos] = useState([])
+
+    useEffect(() => {
+        const savedTodos = JSON.parse(localStorage.getItem('todos')) || []
+        setTodos(savedTodos)
+        setReady(true)
+    }, [])
 
     const handleTodos = () => {
         if (value.trim() !== "") {

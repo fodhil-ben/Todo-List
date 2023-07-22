@@ -12,7 +12,9 @@ function Todo() {
     const handleTodos = () => {
         if (value.trim() !== "") {
             setReady(true)
-            setTodos([...todos, { data: value, completed: false, id: uuidv4(), edit: false }])
+            const newTodos = [...todos, { data: value, completed: false, id: uuidv4(), edit: false }]
+            setTodos(newTodos)
+            localStorage.setItem('todos', JSON.stringify(newTodos))
             setValue('')
         }
     }
@@ -25,15 +27,16 @@ function Todo() {
     }
 
     const handleDelete = (data) => {
-        setTodos(todos.filter(e => e.data !== data))
+        setTodos()
+        const newTodos = todos.filter(e => e.data !== data)
+        setTodos(newTodos)
+        localStorage.setItem('todos', JSON.stringify(newTodos))
     }
 
     const handleEdit = (id) => {
-        setTodos(todos.map(t =>
-            t.id === id ? { ...t, edit: !t.edit }
-                : t
-        ))
-        console.log(todos)
+        const newTodos = todos.map(t => t.id === id ? { ...t, edit: !t.edit } : t)
+        setTodos(newTodos)
+        localStorage.setItem('todos', JSON.stringify(newTodos))
     }
 
     const handleEdits = (id, nv) => {
@@ -54,9 +57,10 @@ function Todo() {
         )
     }
     const toggleTask = (id) => {
-        setTodos(todos.map(t =>
-            t.id === id ? { ...t, completed: !t.completed } : t))
-        console.log(todos)
+        const newTodos = todos.map(t =>
+            t.id === id ? { ...t, completed: !t.completed } : t)
+        setTodos(newTodos)
+        localStorage.setItem('todos', JSON.stringify(newTodos))
     }
 
 

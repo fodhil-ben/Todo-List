@@ -3,7 +3,7 @@
 }
 
 * {
-    font-size: 1.1rem;
+    font-size: 1rem;
     box-sizing: border-box;
 }
 
@@ -11,14 +11,19 @@ body {
     background-color: #eee;
 }
 
+#todos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .todoForm,
 #todos>* {
-    padding: 20px;
     margin: auto;
     display: flex;
     justify-content: space-between;
-    width: 75%;
-    gap: 20px;
+    width: 90%;
+    gap: 10px;
     border-radius: 10px;
 }
 
@@ -27,14 +32,16 @@ body {
 }
 
 input {
-    padding: 20px;
     border-radius: 10px;
     border: 0;
     outline: 0;
+
 }
 
 input[type='text'] {
-    flex-grow: 1;
+    min-width: 60%;
+    padding: 10px;
+    max-width: 80%;
 }
 
 .userInput:focus-visible {
@@ -42,29 +49,46 @@ input[type='text'] {
 }
 
 #btns {
-    flex-basis: 20%;
     display: flex;
+    flex-basis: 20%;
     justify-content: space-between;
+    gap: 5px;
+    flex-grow: 1;
+    width: 35%;
 }
 
-
-
-input[value='Add'],
-input[value='Update'],
 #btns>input {
     cursor: pointer;
     background-color: var(--main-color);
     color: white;
     font-weight: bold;
-    flex-basis: 45%;
+    flex-grow: 1;
 }
 
 input[value='Add'],
 input[value='Update'] {
-    flex-basis: 20%;
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: bold;
+    flex-grow: 1;
+    width: 35%;
 }
 
 .completed {
     color: var(--main-color);
     text-decoration: line-through;
+}
+
+@media (min-width:1000px) {
+    * {
+        font-size: 1.1rem;
+    }
+
+    input {
+        padding: 20px;
+        border-radius: 10px;
+        border: 0;
+        outline: 0;
+    }
 }
